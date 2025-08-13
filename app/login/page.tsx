@@ -82,7 +82,7 @@ const LoginPage = () => {
                     Sign In
                 </Button>
                 <p className="text-center">
-                    Don't have an account? <Link className="hover:underline" href="/sign-up">Sign Up</Link>
+                    Don&apos;t have an account? <Link className="hover:underline" href="/register">Sign Up</Link>
                 </p>
             </form>
         </CardContent>

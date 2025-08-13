@@ -18,7 +18,7 @@ export async function connectToDatabase() {
         return cached.conn
     }
     if (!cached.promise) { 
-        mongoose.connect(MONGODB_URI)
+        cached.promise = mongoose.connect(MONGODB_URI)
         .then(() => mongoose.connection) 
     }
 

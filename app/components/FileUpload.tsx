@@ -18,6 +18,7 @@ const FileUpload = ({
     fileType
 }: FileUploadProps) => {
     const [uploading, setUploading] = useState(false)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [error, setError] = useState<string | null>(null)
     
 
@@ -46,15 +47,15 @@ const FileUpload = ({
 
         try {
             const authRes = await fetch("api/auth/imagekit-auth")
-            const auth = await authRes.json()
+            const {signature, expire, token }= await authRes.json()
 
            const res =  await upload({
                 file,
                 fileName: file.name,
                 publicKey: process.env.NEXT_PUBLIC_PUBLIC_KEY!,
-                signature: auth.signature,
-                token: auth.token,
-                expire: auth.expire,
+                signature: signature,
+                token: token,
+                expire: expire,
                 onProgress: (event) => {
                     if (event.lengthComputable && onProgress) {
                         const percent = (event.loaded / event.total) * 100;
